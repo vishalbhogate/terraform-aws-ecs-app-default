@@ -1,5 +1,5 @@
 resource aws_appautoscaling_target "ecs" {
-  count             = var.launch_type == "FARGATE" ? 0 : var.autoscaling_cpu ? 1 : 0
+  count              = var.launch_type == "FARGATE" ? 0 : var.autoscaling_cpu ? 1 : 0
   max_capacity       = var.autoscaling_max
   min_capacity       = var.autoscaling_min
   resource_id        = "service/${var.cluster_name}/${aws_ecs_service.default.name}"
