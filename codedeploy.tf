@@ -7,7 +7,7 @@ resource aws_codedeploy_deployment_group "ecs" {
   app_name               = aws_codedeploy_app.ecs.name
   deployment_group_name  = "${var.cluster_name}-${var.name}"
   deployment_config_name = "CodeDeployDefault.ECSAllAtOnce"
-  service_role_arn       = aws_iam_role.codedeploy_service.name
+  service_role_arn       = aws_iam_role.codedeploy_service.arn
 
   auto_rollback_configuration {
     enabled = true
