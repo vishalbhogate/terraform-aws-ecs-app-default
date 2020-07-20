@@ -92,6 +92,7 @@ resource aws_lb_target_group "green" {
   protocol             = "HTTP"
   vpc_id               = var.vpc_id
   deregistration_delay = 10
+  target_type          = var.launch_type == "FARGATE" ? "ip" : "instance"
 
   health_check {
     path                = var.healthcheck_path
@@ -113,6 +114,7 @@ resource aws_lb_target_group "blue" {
   protocol             = "HTTP"
   vpc_id               = var.vpc_id
   deregistration_delay = 10
+  target_type          = var.launch_type == "FARGATE" ? "ip" : "instance"
 
   health_check {
     path                = var.healthcheck_path
